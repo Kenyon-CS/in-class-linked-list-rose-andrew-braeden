@@ -61,6 +61,19 @@ class LinkedList {
         delete nodeToRemove;
     }
 
+    T last() {
+        node<T>* temp = head;
+        node<T>* pretemp = nullptr;
+        while(temp->next != nullptr) {
+            pretemp=temp;
+            temp=temp->next;
+        }
+        pretemp->next = nullptr;
+        T value=temp->data;
+        delete temp;
+        return value;
+    }
+
     // Print the list
     void print() {
         node<T>* temp = head;
@@ -96,5 +109,9 @@ int main() {
     std::cout << "After removing 2: ";
     list.print();
 
+    std::cout << list.last() << std::endl;
+
+    std::cout << "After removing last: ";
+    list.print();
     return 0;
 }
