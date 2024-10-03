@@ -77,6 +77,13 @@ class LinkedList {
         return value;
     }
 
+    void pop_back() {
+      if (head == nullptr) return;
+      node<T>* temp = head;
+      head = head->next;
+      return temp;
+    }
+
     // Print the list
     void print() {
         node<T>* temp = head;
