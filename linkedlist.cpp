@@ -5,8 +5,9 @@ class node {
   public:
     T data;           // Data of generic type T
     node* next;       // Pointer to the next node in the list
+    node* prev;
 
-    node(T val) : data(val), next(nullptr) {}
+    node(T val) : data(val), next(nullptr), prev(nullptr) {}
 };
 
 template <typename T>
@@ -18,7 +19,7 @@ class LinkedList {
     LinkedList() : head(nullptr) {}
 
     // Insert at the end
-    void append(T value) {
+    void push_back(T value) {
         node<T>* newNode = new node<T>(value);
         if (head == nullptr) {
             head = newNode;
@@ -28,6 +29,7 @@ class LinkedList {
                 temp = temp->next;
             }
             temp->next = newNode;
+            temp->next->prev = temp;
         }
     }
 
@@ -97,9 +99,9 @@ class LinkedList {
 int main() {
     LinkedList<int> list;
 
-    list.append(1);
-    list.append(2);
-    list.append(3);
+    list.push_back(1);
+    list.push_back(2);
+    list.push_back(3);
     list.prepend(0);
 
     std::cout << "Linked List: ";
