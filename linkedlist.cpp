@@ -34,10 +34,11 @@ class LinkedList {
     }
 
     // Insert at the beginning
-    void prepend(T value) {
+    void push_front(T value) {
         node<T>* newNode = new node<T>(value);
         newNode->next = head;
         head = newNode;
+        newNode->prev = nullptr;
     }
 
     // Remove first occurrence of value
