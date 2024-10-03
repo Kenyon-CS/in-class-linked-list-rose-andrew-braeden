@@ -1,0 +1,6 @@
+void lfirst() {
+  if (head == nullptr) return;
+  node<T>* temp = head;
+  head = head->next;
+  return temp;
+}
